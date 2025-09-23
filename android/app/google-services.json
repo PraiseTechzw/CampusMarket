@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "984032807399",
+    "firebase_url": "https://universestay-8c0e4-default-rtdb.firebaseio.com",
+    "project_id": "universestay-8c0e4",
+    "storage_bucket": "universestay-8c0e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984032807399:android:5341b773819612329d1542",
+        "android_client_info": {
+          "package_name": "co.zw.appixia.campusmarket.campus_market"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984032807399-fmp2vbb6pgkk01l3823pvbla63lik98n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdNzHVzc_Mp9MNhhIxAVaZW4gQ-4AlGxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984032807399-fmp2vbb6pgkk01l3823pvbla63lik98n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984032807399:android:6f043a0a1230c31c9d1542",
+        "android_client_info": {
+          "package_name": "com.appixia.campus_market"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984032807399-fmp2vbb6pgkk01l3823pvbla63lik98n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdNzHVzc_Mp9MNhhIxAVaZW4gQ-4AlGxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984032807399-fmp2vbb6pgkk01l3823pvbla63lik98n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
