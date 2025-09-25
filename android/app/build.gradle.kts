@@ -9,6 +9,7 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+
 android {
     namespace = "co.zw.appixia.campusmarket.campus_market"
     compileSdk = flutter.compileSdkVersion
@@ -38,6 +39,15 @@ android {
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
 
+    signingConfigs {
+        create("release") {
+            keyAlias = "upload"
+            keyPassword = "campusmarket2024"
+            storeFile = file("upload-keystore.jks")
+            storePassword = "campusmarket2024"
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
@@ -57,9 +67,7 @@ android {
             )
             
             // Signing configuration for production
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
             
             // Disable debug features
             isDebuggable = false

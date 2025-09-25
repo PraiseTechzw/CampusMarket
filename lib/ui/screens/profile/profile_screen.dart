@@ -60,6 +60,90 @@ class _ProfileScreenState extends State<ProfileScreen>
     super.dispose();
   }
 
+  void _shareProfile() {
+    // TODO: Implement profile sharing functionality
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Profile sharing functionality coming soon'),
+      ),
+    );
+  }
+
+  Widget _buildVerificationBadges(ThemeData theme, dynamic user) {
+    final badges = [
+      {
+        'title': 'Email Verified',
+        'icon': Icons.email,
+        'verified': true,
+        'color': Colors.green,
+      },
+      {
+        'title': 'Phone Verified',
+        'icon': Icons.phone,
+        'verified': true,
+        'color': Colors.blue,
+      },
+      {
+        'title': 'ID Verified',
+        'icon': Icons.badge,
+        'verified': false,
+        'color': Colors.orange,
+      },
+      {
+        'title': 'University Verified',
+        'icon': Icons.school,
+        'verified': user?.university != null,
+        'color': Colors.purple,
+      },
+    ];
+
+    return Wrap(
+      spacing: AppSpacing.sm,
+      runSpacing: AppSpacing.sm,
+      children: badges.map((badge) {
+        final isVerified = badge['verified'] as bool;
+        final color = badge['color'] as Color;
+
+        return Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.sm,
+            vertical: AppSpacing.xs,
+          ),
+          decoration: BoxDecoration(
+            color: isVerified
+                ? color.withOpacity(0.1)
+                : theme.colorScheme.outline.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: isVerified
+                  ? color
+                  : theme.colorScheme.outline.withOpacity(0.3),
+              width: 1,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                isVerified ? Icons.check_circle : Icons.pending,
+                size: 14,
+                color: isVerified ? color : theme.colorScheme.outline,
+              ),
+              const SizedBox(width: 4),
+              Text(
+                badge['title'] as String,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: isVerified ? color : theme.colorScheme.outline,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -134,9 +218,7 @@ class _ProfileScreenState extends State<ProfileScreen>
       ),
       IconButton(
         icon: const Icon(Icons.edit),
-        onPressed: () {
-          // TODO: Navigate to edit profile
-        },
+        onPressed: () => context.go('/profile/edit'),
       ),
     ],
   );
@@ -247,7 +329,7 @@ class _ProfileScreenState extends State<ProfileScreen>
 
                     const SizedBox(height: AppSpacing.sm),
 
-                    // University
+                    // University and verification status
                     if (user?.university != null)
                       Container(
                         padding: const EdgeInsets.symmetric(
@@ -258,14 +340,30 @@ class _ProfileScreenState extends State<ProfileScreen>
                           color: theme.colorScheme.primary.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Text(
-                          user!.university!,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: theme.colorScheme.primary,
-                            fontWeight: FontWeight.w600,
-                          ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              user!.university!,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: theme.colorScheme.primary,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(width: AppSpacing.sm),
+                            Icon(
+                              Icons.verified,
+                              size: 16,
+                              color: theme.colorScheme.primary,
+                            ),
+                          ],
                         ),
                       ),
+
+                    const SizedBox(height: AppSpacing.sm),
+
+                    // Verification badges
+                    _buildVerificationBadges(theme, user),
 
                     const SizedBox(height: AppSpacing.lg),
 
@@ -274,9 +372,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                       children: [
                         Expanded(
                           child: ElevatedButton.icon(
-                            onPressed: () {
-                              // TODO: Navigate to edit profile
-                            },
+                            onPressed: () => context.go('/profile/edit'),
                             icon: const Icon(Icons.edit),
                             label: const Text('Edit Profile'),
                             style: ElevatedButton.styleFrom(
@@ -294,9 +390,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                         const SizedBox(width: AppSpacing.md),
                         Expanded(
                           child: OutlinedButton.icon(
-                            onPressed: () {
-                              // TODO: Share profile
-                            },
+                            onPressed: () => _shareProfile(),
                             icon: const Icon(Icons.share),
                             label: const Text('Share'),
                             style: OutlinedButton.styleFrom(
@@ -406,54 +500,49 @@ class _ProfileScreenState extends State<ProfileScreen>
         subtitle: 'Manage your marketplace items',
         icon: Icons.store,
         color: Colors.blue,
-        onTap: () {
-          // TODO: Navigate to my listings
-        },
+        onTap: () => context.go('/profile/my-listings'),
       ),
       MenuItem(
         title: 'My Bookings',
         subtitle: 'View your accommodation bookings',
         icon: Icons.home_work,
         color: Colors.green,
-        onTap: () {
-          // TODO: Navigate to my bookings
-        },
+        onTap: () => context.go('/profile/my-bookings'),
       ),
       MenuItem(
         title: 'Event Tickets',
         subtitle: 'Your event tickets and RSVPs',
         icon: Icons.event,
         color: Colors.orange,
-        onTap: () {
-          // TODO: Navigate to event tickets
-        },
+        onTap: () => context.go('/profile/event-tickets'),
       ),
       MenuItem(
         title: 'Saved Items',
         subtitle: "Items you've saved for later",
         icon: Icons.favorite,
         color: Colors.red,
-        onTap: () {
-          // TODO: Navigate to saved items
-        },
+        onTap: () => context.go('/profile/saved-items'),
       ),
       MenuItem(
         title: 'Payment Methods',
         subtitle: 'Manage your payment options',
         icon: Icons.payment,
         color: Colors.purple,
-        onTap: () {
-          // TODO: Navigate to payment methods
-        },
+        onTap: () => context.go('/profile/payment-methods'),
+      ),
+      MenuItem(
+        title: 'Activity History',
+        subtitle: 'View your recent activity',
+        icon: Icons.history,
+        color: Colors.indigo,
+        onTap: () => context.go('/profile/activity-history'),
       ),
       MenuItem(
         title: 'Help & Support',
         subtitle: 'Get help and contact support',
         icon: Icons.help,
         color: Colors.teal,
-        onTap: () {
-          // TODO: Navigate to help
-        },
+        onTap: () => context.go('/help'),
       ),
     ];
 

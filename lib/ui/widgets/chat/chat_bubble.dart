@@ -372,3 +372,5 @@ class ChatBubble extends StatelessWidget {
 
 
 
+
+

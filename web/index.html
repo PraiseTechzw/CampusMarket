@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -18,27 +18,72 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Campus Market - A modern student marketplace Flutter application">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
+  <!-- Enhanced SEO Meta Tags -->
+  <meta name="description" content="Campus Market - The ultimate student marketplace for buying, selling, and discovering campus life essentials. Connect with fellow students, find accommodation, discover events, and trade items safely on campus.">
+  <meta name="keywords" content="campus market, student marketplace, university, college, buy, sell, trade, accommodation, events, campus life, student community">
+  <meta name="author" content="Campus Market Team">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  
+  <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:title" content="Campus Market - Student Marketplace">
+  <meta property="og:description" content="The ultimate student marketplace for buying, selling, and discovering campus life essentials. Connect with fellow students and enhance your campus experience.">
+  <meta property="og:image" content="icons/Icon-512.png">
+  <meta property="og:url" content="https://campusmarket.app">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Campus Market">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Campus Market - Student Marketplace">
+  <meta name="twitter:description" content="The ultimate student marketplace for buying, selling, and discovering campus life essentials.">
+  <meta name="twitter:image" content="icons/Icon-512.png">
+  
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Campus Market">
+  <meta name="apple-touch-fullscreen" content="yes">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="icons/Icon-512.png">
+  
+  <!-- Android Chrome Meta Tags - Campus Market Branding -->
+  <meta name="theme-color" content="#2E7D32">
+  <meta name="msapplication-TileColor" content="#2E7D32">
+  <meta name="msapplication-TileImage" content="icons/Icon-192.png">
+  
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
 
-  <title>Campus Market</title>
+  <title>Campus Market - Student Marketplace</title>
   <link rel="manifest" href="manifest.json">
 
-  <!-- Preload critical resources -->
+  <!-- Preload critical resources for better performance -->
   <link rel="preload" href="https://www.gstatic.com/flutter-canvaskit/chromium/canvaskit.js" as="script" crossorigin="anonymous">
+  <link rel="preload" href="flutter_bootstrap.js" as="script">
+  <link rel="preload" href="main.dart.js" as="script">
   
-  <!-- Fallback for CanvasKit loading issues -->
+  <!-- DNS Prefetch for external resources -->
+  <link rel="dns-prefetch" href="//www.gstatic.com">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//firebase.googleapis.com">
+  
+  <!-- Performance and Error Handling -->
   <script>
-    // Add error handling for CanvasKit loading
+    // Performance monitoring
+    window.addEventListener('load', function() {
+      if ('performance' in window) {
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        console.log('Page load time:', loadTime + 'ms');
+      }
+    });
+    
+    // Error handling for CanvasKit loading
     window.addEventListener('error', function(e) {
       if (e.message && e.message.includes('canvaskit')) {
         console.warn('CanvasKit loading failed, attempting fallback...');
@@ -51,53 +96,384 @@
         }
       }
     });
+    
+    // Service Worker registration for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('flutter_service_worker.js')
+          .then(function(registration) {
+            console.log('ServiceWorker registration successful');
+          })
+          .catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+    
+    // Offline detection
+    window.addEventListener('online', function() {
+      console.log('Connection restored');
+      document.body.classList.remove('offline');
+    });
+    
+    window.addEventListener('offline', function() {
+      console.log('Connection lost');
+      document.body.classList.add('offline');
+    });
   </script>
 </head>
 <body>
-  <!-- Loading indicator -->
+  <!-- Enhanced Loading Screen - Campus Market Branding -->
   <div id="loading" style="
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #f5f5f5;
+    background: linear-gradient(135deg, 
+      rgba(46, 125, 50, 0.1) 0%, 
+      rgba(251, 192, 45, 0.05) 50%, 
+      rgba(255, 112, 67, 0.1) 100%
+    );
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    transition: opacity 0.5s ease-out;
   ">
-    <div style="text-align: center;">
+    <div style="text-align: center; color: #0F172A;">
+      <!-- App Logo/Icon - Campus Market Style -->
       <div style="
-        width: 40px;
-        height: 40px;
-        border: 4px solid #e3e3e3;
-        border-top: 4px solid #0175C2;
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(135deg, #2E7D32 0%, #FBC02D 100%);
+        border-radius: 75px;
+        margin: 0 auto 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+        animation: logoPulse 2s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
+      ">
+        <!-- Inner glow effect -->
+        <div style="
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
+          background: linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.2) 0%, 
+            rgba(255, 255, 255, 0.05) 100%
+          );
+          border-radius: 65px;
+        "></div>
+        
+        <!-- App Icon -->
+        <div style="
+          width: 80px;
+          height: 80px;
+          background: white;
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #2E7D32;
+          font-weight: bold;
+          font-size: 32px;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          position: relative;
+          z-index: 1;
+        ">CM</div>
+      </div>
+      
+      <!-- Loading Spinner - Brand Colors -->
+      <div style="
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(46, 125, 50, 0.2);
+        border-top: 4px solid #2E7D32;
         border-radius: 50%;
         animation: spin 1s linear infinite;
         margin: 0 auto 20px;
       "></div>
-      <p style="color: #666; font-family: Arial, sans-serif;">Loading Campus Market...</p>
+      
+      <!-- Loading Text - Campus Market Typography -->
+      <h2 style="
+        color: #0F172A;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+        letter-spacing: -0.5px;
+      ">Campus Market</h2>
+      <p style="
+        color: #757575;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        margin: 0;
+        opacity: 0.8;
+      ">Initializing your campus experience...</p>
+      
+      <!-- Progress Bar - Brand Colors -->
+      <div style="
+        width: 200px;
+        height: 6px;
+        background: rgba(46, 125, 50, 0.1);
+        border-radius: 3px;
+        margin: 30px auto 0;
+        overflow: hidden;
+        position: relative;
+      ">
+        <div id="progress-bar" style="
+          width: 0%;
+          height: 100%;
+          background: linear-gradient(90deg, #2E7D32 0%, #FBC02D 100%);
+          border-radius: 3px;
+          transition: width 0.3s ease;
+          animation: progress 3s ease-in-out infinite;
+        "></div>
+      </div>
+      
+      <!-- Brand tagline -->
+      <p style="
+        color: #757575;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        margin: 20px auto 0;
+        opacity: 0.6;
+        max-width: 300px;
+        line-height: 1.4;
+      ">The ultimate student marketplace for buying, selling, and discovering campus life essentials</p>
     </div>
   </div>
 
+  <!-- Offline Indicator - Campus Market Branding -->
+  <div id="offline-indicator" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, #FF7043 0%, #FBC02D 100%);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 10000;
+    display: none;
+    box-shadow: 0 2px 8px rgba(255, 112, 67, 0.3);
+  ">
+    📡 You're offline. Some features may not be available.
+  </div>
+
   <style>
+    /* Campus Market Brand Animations */
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes logoPulse {
+      0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+      }
+      50% { 
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(46, 125, 50, 0.4);
+      }
+    }
+    
+    @keyframes progress {
+      0% { width: 0%; }
+      50% { width: 70%; }
+      100% { width: 100%; }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Offline styles */
+    body.offline #offline-indicator {
+      display: block;
+      animation: fadeInUp 0.3s ease-out;
+    }
+    
+    /* Campus Market Responsive Design */
+    @media (max-width: 768px) {
+      #loading div[style*="width: 150px"] {
+        width: 120px !important;
+        height: 120px !important;
+        border-radius: 60px !important;
+      }
+      
+      #loading div[style*="width: 80px"] {
+        width: 60px !important;
+        height: 60px !important;
+        border-radius: 15px !important;
+        font-size: 24px !important;
+      }
+      
+      #loading h2 {
+        font-size: 24px !important;
+      }
+      
+      #loading p {
+        font-size: 14px !important;
+      }
+      
+      #loading div[style*="width: 200px"] {
+        width: 160px !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      #loading div[style*="width: 150px"] {
+        width: 100px !important;
+        height: 100px !important;
+        border-radius: 50px !important;
+      }
+      
+      #loading div[style*="width: 80px"] {
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 12px !important;
+        font-size: 20px !important;
+      }
+      
+      #loading h2 {
+        font-size: 20px !important;
+      }
+      
+      #loading p {
+        font-size: 13px !important;
+      }
+    }
+    
+    /* Smooth transitions for all elements */
+    * {
+      transition: all 0.3s ease;
+    }
+    
+    /* Custom scrollbar for webkit browsers */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #2E7D32 0%, #FBC02D 100%);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #1B5E20 0%, #F57F17 100%);
     }
   </style>
 
   <script src="flutter_bootstrap.js" async></script>
   
   <script>
+    // Enhanced loading and app initialization
+    let loadingProgress = 0;
+    const progressBar = document.getElementById('progress-bar');
+    const loading = document.getElementById('loading');
+    
+    // Simulate loading progress
+    const progressInterval = setInterval(() => {
+      loadingProgress += Math.random() * 15;
+      if (loadingProgress > 90) loadingProgress = 90;
+      if (progressBar) {
+        progressBar.style.width = loadingProgress + '%';
+      }
+    }, 200);
+    
     // Hide loading indicator when Flutter app loads
     window.addEventListener('flutter-first-frame', function() {
-      const loading = document.getElementById('loading');
-      if (loading) {
-        loading.style.display = 'none';
+      clearInterval(progressInterval);
+      if (progressBar) {
+        progressBar.style.width = '100%';
       }
+      
+      // Fade out loading screen
+      setTimeout(() => {
+        if (loading) {
+          loading.style.opacity = '0';
+          setTimeout(() => {
+            loading.style.display = 'none';
+          }, 500);
+        }
+      }, 500);
     });
+    
+    // Fallback: Hide loading after 10 seconds
+    setTimeout(() => {
+      if (loading && loading.style.display !== 'none') {
+        clearInterval(progressInterval);
+        loading.style.opacity = '0';
+        setTimeout(() => {
+          loading.style.display = 'none';
+        }, 500);
+      }
+    }, 10000);
+    
+    // Analytics and tracking (placeholder for production)
+    window.addEventListener('load', function() {
+      // Add your analytics tracking code here
+      console.log('Campus Market loaded successfully');
+    });
+    
+    // Error boundary for unhandled errors
+    window.addEventListener('error', function(e) {
+      console.error('Unhandled error:', e.error);
+      // You can send error reports to your analytics service here
+    });
+    
+    // Unhandled promise rejection handling
+    window.addEventListener('unhandledrejection', function(e) {
+      console.error('Unhandled promise rejection:', e.reason);
+      // You can send error reports to your analytics service here
+    });
+  </script>
+  
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Campus Market",
+    "description": "The ultimate student marketplace for buying, selling, and discovering campus life essentials",
+    "url": "https://campusmarket.app",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "Campus Market Team"
+    }
+  }
   </script>
 </body>
 </html>

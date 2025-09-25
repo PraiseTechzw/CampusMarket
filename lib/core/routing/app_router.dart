@@ -32,7 +32,9 @@ import '../../ui/screens/marketplace/create_marketplace_screen.dart';
 import '../../ui/screens/marketplace/marketplace_list_screen.dart';
 import '../../ui/screens/marketplace/product_detail_screen.dart';
 import '../../ui/screens/onboarding/onboarding_screen.dart';
+import '../../ui/screens/profile/activity_history_screen.dart';
 import '../../ui/screens/profile/edit_profile_screen.dart';
+import '../../ui/screens/profile/event_tickets_screen.dart';
 import '../../ui/screens/profile/my_listings_screen.dart';
 import '../../ui/screens/profile/payment_methods_screen.dart';
 import '../../ui/screens/profile/profile_screen.dart';
@@ -227,8 +229,12 @@ class AppRouter {
           GoRoute(
             path: '/profile/event-tickets',
             name: 'event-tickets',
-            builder: (context, state) =>
-                const EventsListScreen(), // Using events list for now
+            builder: (context, state) => const EventTicketsScreen(),
+          ),
+          GoRoute(
+            path: '/profile/activity-history',
+            name: 'activity-history',
+            builder: (context, state) => const ActivityHistoryScreen(),
           ),
 
           // Settings
