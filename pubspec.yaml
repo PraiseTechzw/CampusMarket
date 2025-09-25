@@ -48,7 +48,7 @@ dependencies:
   share_plus: ^12.0.0
   super_clipboard: ^0.9.1
   clipboard: ^2.0.2
-  connectivity_plus: ^6.0.5
+  connectivity_plus: ^7.0.0
   fluttertoast: ^8.2.8
   geolocator: ^12.0.0
 
