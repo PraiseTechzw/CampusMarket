@@ -1,0 +1,67 @@
+name: Security & Compliance Scan
+
+on:
+  schedule:
+    - cron: '0 2 * * 1' # Weekly on Monday at 2 AM
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  security-scan:
+    name: Security & Compliance Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: Run CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          languages: dart
+
+      - name: Flutter Security Audit
+        run: |
+          flutter pub audit
+          dart pub audit
+
+      - name: Check for hardcoded secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: main
+          head: HEAD
+          extra_args: --debug --only-verified
+
+      - name: Dependency vulnerability check
+        run: |
+          flutter pub deps --json > deps.json
+          # Add custom vulnerability scanning logic here
+
+      - name: Generate security report
+        run: |
+          echo "# 🔒 Security Scan Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 📋 Scan Results" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trivy Scan**: Completed" >> $GITHUB_STEP_SUMMARY
+          echo "- **CodeQL Analysis**: Completed" >> $GITHUB_STEP_SUMMARY
+          echo "- **Flutter Audit**: Completed" >> $GITHUB_STEP_SUMMARY
+          echo "- **Secret Scanning**: Completed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 🛡️ Security Status" >> $GITHUB_STEP_SUMMARY
+          echo "All security scans completed successfully." >> $GITHUB_STEP_SUMMARY

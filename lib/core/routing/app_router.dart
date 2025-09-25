@@ -40,6 +40,11 @@ import '../../ui/screens/profile/payment_methods_screen.dart';
 import '../../ui/screens/profile/profile_screen.dart';
 import '../../ui/screens/profile/saved_items_screen.dart';
 import '../../ui/screens/search/search_screen.dart';
+import '../../ui/screens/settings/data_export_screen.dart';
+import '../../ui/screens/settings/data_usage_screen.dart';
+import '../../ui/screens/settings/location_settings_screen.dart';
+import '../../ui/screens/settings/privacy_settings_screen.dart';
+import '../../ui/screens/settings/security_settings_screen.dart';
 import '../../ui/screens/settings/settings_screen.dart';
 import '../../ui/screens/splash/splash_screen.dart';
 import '../../ui/screens/support/help_support_screen.dart';
@@ -242,6 +247,31 @@ class AppRouter {
             path: '/settings',
             name: 'settings',
             builder: (context, state) => const SettingsScreen(),
+          ),
+          GoRoute(
+            path: '/settings/security',
+            name: 'security-settings',
+            builder: (context, state) => const SecuritySettingsScreen(),
+          ),
+          GoRoute(
+            path: '/settings/privacy',
+            name: 'privacy-settings',
+            builder: (context, state) => const PrivacySettingsScreen(),
+          ),
+          GoRoute(
+            path: '/settings/location',
+            name: 'location-settings',
+            builder: (context, state) => const LocationSettingsScreen(),
+          ),
+          GoRoute(
+            path: '/settings/data-usage',
+            name: 'data-usage-settings',
+            builder: (context, state) => const DataUsageScreen(),
+          ),
+          GoRoute(
+            path: '/settings/data-export',
+            name: 'data-export',
+            builder: (context, state) => const DataExportScreen(),
           ),
 
           // Help & Support

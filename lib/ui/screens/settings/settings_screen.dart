@@ -483,9 +483,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           title: const Text('Profile Visibility'),
           subtitle: const Text('Control who can see your profile'),
           trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Implement profile visibility settings
-          },
+          onTap: () => context.go('/settings/privacy'),
         ),
 
         ListTile(
@@ -493,9 +491,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           title: const Text('Location Sharing'),
           subtitle: const Text('Control location data sharing'),
           trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Implement location settings
-          },
+          onTap: () => context.go('/settings/location'),
         ),
 
         ListTile(
@@ -503,9 +499,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           title: const Text('Data Usage'),
           subtitle: const Text('Manage your data and privacy'),
           trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Implement data usage settings
-          },
+          onTap: () => context.go('/settings/data-usage'),
         ),
       ],
     ),
@@ -529,9 +523,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           title: const Text('Edit Profile'),
           subtitle: const Text('Update your personal information'),
           trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Navigate to edit profile
-          },
+          onTap: () => context.go('/profile/edit'),
         ),
 
         ListTile(
@@ -539,9 +531,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           title: const Text('Security'),
           subtitle: const Text('Password and security settings'),
           trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Navigate to security settings
-          },
+          onTap: () => context.go('/settings/security'),
         ),
 
         ListTile(
@@ -549,9 +539,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           title: const Text('Payment Methods'),
           subtitle: const Text('Manage your payment options'),
           trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Navigate to payment methods
-          },
+          onTap: () => context.go('/profile/payment-methods'),
         ),
 
         ListTile(
@@ -559,9 +547,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           title: const Text('Download Data'),
           subtitle: const Text('Export your account data'),
           trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Implement data export
-          },
+          onTap: () => context.go('/settings/data-export'),
         ),
       ],
     ),
@@ -594,9 +580,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           title: const Text('Help & Support'),
           subtitle: const Text('Get help and contact support'),
           trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Navigate to help
-          },
+          onTap: () => context.go('/help'),
         ),
 
         ListTile(
@@ -604,9 +588,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           title: const Text('Terms of Service'),
           subtitle: const Text('Read our terms and conditions'),
           trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Navigate to terms
-          },
+          onTap: () => context.go('/legal/terms'),
         ),
 
         ListTile(
@@ -614,9 +596,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           title: const Text('Privacy Policy'),
           subtitle: const Text('Read our privacy policy'),
           trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Navigate to privacy policy
-          },
+          onTap: () => context.go('/legal/privacy'),
         ),
 
         const Divider(),

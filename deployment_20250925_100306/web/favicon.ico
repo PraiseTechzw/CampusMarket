@@ -1,0 +1,18 @@
+# This is a placeholder for favicon.ico
+# You need to create a proper favicon.ico file using your Campus Market logo
+# 
+# To create the favicon.ico:
+# 1. Use your existing logo from assets/images/logo.png or assets/onboarding/Campus Connect Logo - Yellow Accent (1).png
+# 2. Resize it to 16x16, 32x32, and 48x48 pixels
+# 3. Convert to ICO format using an online converter or image editing software
+# 4. Replace this placeholder file with the actual favicon.ico
+#
+# Recommended favicon sizes:
+# - 16x16 pixels (browser tab)
+# - 32x32 pixels (browser bookmark)
+# - 48x48 pixels (Windows desktop)
+#
+# The favicon should use your Campus Market branding colors:
+# - Primary: #2E7D32 (green)
+# - Accent: #FBC02D (yellow)
+# - Secondary: #FF7043 (orange)

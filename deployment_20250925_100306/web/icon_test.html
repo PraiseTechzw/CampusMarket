@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Market - Icon Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #2E7D32 0%, #FBC02D 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .icon-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .icon-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success { background: rgba(76, 175, 80, 0.3); }
+        .warning { background: rgba(255, 193, 7, 0.3); }
+        .error { background: rgba(244, 67, 54, 0.3); }
+        h1, h2 { text-align: center; }
+        .checklist {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .checklist li {
+            margin: 10px 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Campus Market - Icon Test</h1>
+        <p>This page helps you test if all your Campus Market icons are working correctly.</p>
+        
+        <div class="status success">
+            ✅ HTML meta tags configured
+        </div>
+        <div class="status success">
+            ✅ Manifest.json updated
+        </div>
+        <div class="status warning">
+            ⚠️ Icon files need to be created
+        </div>
+
+        <h2>📱 Icon Display Test</h2>
+        <div class="icon-grid">
+            <div class="icon-item">
+                <h3>Favicon (ICO)</h3>
+                <img src="icons/favicon.ico" alt="Favicon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display:none; color: #ff6b6b;">❌ favicon.ico not found</div>
+            </div>
+            
+            <div class="icon-item">
+                <h3>Favicon (SVG)</h3>
+                <img src="icons/favicon.svg" alt="SVG Favicon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display:none; color: #ff6b6b;">❌ favicon.svg not found</div>
+            </div>
+            
+            <div class="icon-item">
+                <h3>PNG Favicon (96x96)</h3>
+                <img src="icons/favicon-96x96.png" alt="96x96 Favicon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display:none; color: #ff6b6b;">❌ favicon-96x96.png not found</div>
+            </div>
+            
+            <div class="icon-item">
+                <h3>Apple Touch (180x180)</h3>
+                <img src="icons/apple-touch-icon.png" alt="Apple Touch Icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display:none; color: #ff6b6b;">❌ apple-touch-icon.png not found</div>
+            </div>
+            
+            <div class="icon-item">
+                <h3>Web App (192x192)</h3>
+                <img src="icons/web-app-manifest-192x192.png" alt="192x192 Web App Icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display:none; color: #ff6b6b;">❌ web-app-manifest-192x192.png not found</div>
+            </div>
+            
+            <div class="icon-item">
+                <h3>Web App (512x512)</h3>
+                <img src="icons/web-app-manifest-512x512.png" alt="512x512 Web App Icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display:none; color: #ff6b6b;">❌ web-app-manifest-512x512.png not found</div>
+            </div>
+        </div>
+
+        <div class="checklist">
+            <h2>✅ Icon Creation Checklist</h2>
+            <ul>
+                <li>📁 Create favicon.ico (16x16, 32x32, 48x48)</li>
+                <li>🖼️ Generate Icon-16.png, Icon-32.png, Icon-48.png</li>
+                <li>📱 Create Icon-72.png, Icon-96.png, Icon-144.png</li>
+                <li>🍎 Generate Icon-180.png (Apple touch icon)</li>
+                <li>💻 Create Icon-192.png, Icon-512.png</li>
+                <li>🎭 Generate maskable icons (Icon-maskable-192.png, Icon-maskable-512.png)</li>
+                <li>🔍 Test in browser tab (favicon should appear)</li>
+                <li>📱 Test PWA installation</li>
+                <li>🌐 Test on mobile devices</li>
+            </ul>
+        </div>
+
+        <div class="status warning">
+            <h3>🚀 Next Steps</h3>
+            <p>1. Use your Campus Market logo to create all required icon sizes</p>
+            <p>2. Follow the guide in <code>generate_icons.md</code></p>
+            <p>3. Test this page after creating icons</p>
+            <p>4. Verify favicon appears in browser tab</p>
+        </div>
+
+        <h2>🎨 Campus Market Branding</h2>
+        <div style="display: flex; gap: 20px; justify-content: center; margin: 20px 0;">
+            <div style="background: #2E7D32; padding: 10px; border-radius: 5px;">Primary Green</div>
+            <div style="background: #FBC02D; color: #000; padding: 10px; border-radius: 5px;">Accent Yellow</div>
+            <div style="background: #FF7043; padding: 10px; border-radius: 5px;">Secondary Orange</div>
+        </div>
+    </div>
+
+    <script>
+        // Check if icons are loading
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Campus Market Icon Test Page Loaded');
+            console.log('Check browser tab for favicon');
+            console.log('Test PWA installation by clicking browser menu');
+        });
+    </script>
+</body>
+</html>

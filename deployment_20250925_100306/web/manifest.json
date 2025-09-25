@@ -1,0 +1,52 @@
+{
+    "name": "Campus Market - Student Marketplace",
+    "short_name": "Campus Market",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#2E7D32",
+    "theme_color": "#2E7D32",
+    "description": "The ultimate student marketplace for buying, selling, and discovering campus life essentials. Connect with fellow students and enhance your campus experience.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "scope": "/",
+    "lang": "en",
+    "categories": ["education", "shopping", "lifestyle", "social"],
+    "icons": [
+        {
+            "src": "icons/favicon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/web-app-manifest-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/web-app-manifest-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/web-app-manifest-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/web-app-manifest-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
