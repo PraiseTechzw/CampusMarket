@@ -49,7 +49,7 @@ dependencies:
   super_clipboard: ^0.9.1
   clipboard: ^2.0.2
   connectivity_plus: ^6.0.5
-  fluttertoast: ^8.2.8
+  fluttertoast: ^9.0.0
   geolocator: ^12.0.0
 
   # Database & API
