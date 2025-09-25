@@ -75,7 +75,7 @@ dev_dependencies:
   golden_toolkit: ^0.15.0
 
   # notifications
-  firebase_messaging: ^16.0.1
+  firebase_messaging: ^16.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
