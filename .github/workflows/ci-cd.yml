@@ -81,7 +81,7 @@ jobs:
         run: flutter build apk --release --target-platform android-arm,android-arm64,android-x64
 
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: campus-market-apk
           path: build/app/outputs/flutter-apk/app-release.apk
@@ -116,7 +116,7 @@ jobs:
         run: flutter build appbundle --release
 
       - name: Upload AAB artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: campus-market-aab
           path: build/app/outputs/bundle/release/app-release.aab
@@ -145,7 +145,7 @@ jobs:
         run: flutter build web --release
 
       - name: Upload Web artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: campus-market-web
           path: build/web
